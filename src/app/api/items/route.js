@@ -43,7 +43,7 @@ export async function POST(req) {
     const postedData = await req.json();
 
     const result = await collection.insertOne(postedData);
-     revalidatePath("/heros")  //to revalidate the cache and update the data on the page after adding new hero
+     //revalidatePath("/heros")  //to revalidate the cache and update the data on the page after adding new hero
 
     return new Response(JSON.stringify({ success: true, id: result.insertedId }), 
     { 

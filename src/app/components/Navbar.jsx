@@ -34,6 +34,9 @@ return(
             <Link href="/meals" className="hover:text-yellow-300 transition">
               Meals
             </Link>
+            <Link href="/heros" className="hover:text-yellow-300 transition">
+              Heros
+            </Link>
             <Link href="/about" className="hover:text-yellow-300 transition">
               About
             </Link>

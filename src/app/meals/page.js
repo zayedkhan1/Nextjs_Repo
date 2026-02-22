@@ -1,4 +1,12 @@
+import Link from "next/link";
 import MealSearchInput from "./components/MealSearchInput";
+import Image from "next/image";
+
+export const metadata = {
+  title: "Meals Next.js",
+  description: "Everything about Next.js meals",
+};
+
 
 //when to use client side and server side data featching
 const Meals = async({searchParams}) => {
@@ -21,29 +29,10 @@ const meals =await getMeals();
     
   
     return (
-        // <div  >
-        //     <h1>Tota meals : {meals.length}</h1>
-        //   <div>
-
-        //     <MealSearchInput></MealSearchInput>
-        //   </div>
-        //     {
-        //         meals?.map(meal=>{
-        //             return(
-        //                 <div key={meal.idMeal}>
-        //                     <h1>{meal?.strMeal}</h1>
-        //                     <p>{meal?.strInstructions}</p>
-                            
-
-
-        //                 </div>
-        //             )
-        //         })
-        //     }
-        // </div>
+        
         <div className="min-h-screen bg-purple-50 p-8">
         <h1 className="text-3xl font-bold text-purple-800 mb-8 text-center">
-          Total Meals  {meals?.lenght}
+          Total Meals  {meals?.length || 0}
         </h1>
       
         <div className="mb-8 flex justify-center">
@@ -57,11 +46,16 @@ const meals =await getMeals();
               className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
             >
               {/* Meal Image */}
-              <img
-                src={meal?.strMealThumb}
+              <Image
+               src={meal?.strMealThumb}
                 alt={meal?.strMeal}
-                className="w-full h-40 object-cover"
-              />
+                width={500}
+                height={100}
+
+              >
+
+              </Image>
+           
       
               {/* Meal Content */}
               <div className="p-6">
@@ -73,12 +67,16 @@ const meals =await getMeals();
                 </p>
       
                 {/* Button */}
-                <button className="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg font-semibold ">
+              <Link  href={`/meals/${meal.idMeal}`}>
+                 <button className="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700 transition duration-300">
                   View Recipe
-                </button> 
-              </div>
-            </div>
-          ))}
+                </button>
+         
+              </Link>
+             
+              </div> 
+            </div>     
+               ))}
         </div>
       </div>
     );

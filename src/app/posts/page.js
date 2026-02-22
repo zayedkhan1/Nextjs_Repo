@@ -1,5 +1,9 @@
 import { getPosts } from "@/utility/getposts";
 import Link from "next/link";
+export const metadata = {
+  title: "Posts Next.js",
+  description: "Everything about Next.js Posts",
+};
 
 
 

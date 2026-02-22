@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "About Next.js",
+  description: "Everything about Next.js",
+};
+
+
 export default function About(){
     return(
         <div>

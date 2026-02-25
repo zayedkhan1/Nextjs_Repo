@@ -19,12 +19,12 @@
 
 
 // /app/api/items/route.js
-import { dbConnect } from "@/lib/dbConnect";
+import { collectionName, dbConnect } from "@/lib/dbConnect";
 import { revalidatePath } from "next/cache";
 
 export async function GET() {
   try {
-    const collection = await dbConnect("Heros");
+    const collection = await dbConnect(collectionName.HEROS);
     const data = await collection.find({}).toArray();
 
     return new Response(JSON.stringify(data), {
@@ -39,7 +39,7 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    const collection = await dbConnect("Heros");
+    const collection = await dbConnect(collectionName.HEROS);
     const postedData = await req.json();
 
     const result = await collection.insertOne(postedData);

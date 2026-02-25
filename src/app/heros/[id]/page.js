@@ -5,10 +5,10 @@ const Hero =async ({params}) => {
     const {id}=params;
     const data=await getHerosData();
 
-   
-
     const hero=data.find(hero=>hero._id.toString()===id); 
     console.log(hero);
+
+    
      // const res=await fetch(`http://localhost:3000/api/items/${id}`);
     // const singleHero=await res.json();
     // console.log(singleHero);

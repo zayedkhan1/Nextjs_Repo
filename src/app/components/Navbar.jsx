@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {  signIn } from "next-auth/react"
 
 export default function Navbar(){
   const pathname=usePathname();
@@ -47,10 +48,16 @@ return(
 
           {/* Button */}
           <div className="hidden md:block">
-            <button className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
+            <button onClick={() => signIn()} className="bg-yellow-400 mr-2 text-purple-800 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
               Login
             </button>
+           <Link href={`/register`}>
+            <button   className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
+              Register
+            </button>
+           </Link>
           </div>
+        
 
           {/* Mobile Icon */}
           <div className="md:hidden">

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {  signIn } from "next-auth/react"
+import {  signIn, signOut } from "next-auth/react"
 
 export default function Navbar(){
   const pathname=usePathname();
@@ -46,6 +46,10 @@ return(
             </Link> */}
           </div>
 
+          {/* {
+            session.user? (logout ): (login /register)
+          } */}
+
           {/* Button */}
           <div className="hidden md:block">
             <button onClick={() => signIn()} className="bg-yellow-400 mr-2 text-purple-800 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
@@ -54,6 +58,11 @@ return(
            <Link href={`/register`}>
             <button   className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
               Register
+            </button>
+           </Link>
+           <Link href={`/`}>
+            <button  onClick={()=>signOut()}  className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
+              Logout
             </button>
            </Link>
           </div>

@@ -6,11 +6,12 @@ const middleware =async (req) => {
     const token=await getToken({req});
     // if(token) console.log("token from middleware : ",token)
     const isTokenOK=Boolean(token)
-    const isAdminUser=token?.role == 'amin';
+    const isAdminUser=token?.role == 'admin';
     const isAdminSpecificRoute=req.nextUrl.pathname.startsWith('/heros')
     if(isAdminSpecificRoute && !isAdminUser){
         //send back where they came from
-        return NextResponse.redirect(new URL('/register',req.url))
+        const callbackUrl=encodeURIComponent(req.nextUrl.pathname)
+        return NextResponse.redirect(new URL(`/api/auth/signin?callbackUrl=${callbackUrl}`,req.url))
     }
 
  
